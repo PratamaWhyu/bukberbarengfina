@@ -1,78 +1,91 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
-	<title>Bukber</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukber</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
 
-	<script type="text/javascript">
-		disp = 1
+        .container {
+            max-width: 90%;
+        }
 
-		function f1() {
-			alert("You: Gasss");
-			alert("Me: Nah Gitu Dong 🥳🥳");
-		}
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
 
-		function f2() {
-			if (disp == 1) {
-				btn.style.top = 450
-				btn.style.left = 300
-				disp = 2
-			} else if (disp == 2) {
-				btn.style.top = 450
-				btn.style.left = 30
-				disp = 3
-			} else if (disp == 3) {
-				btn.style.top = 500
-				btn.style.left = 300
-				disp = 4
-			} else if (disp == 4) {
-				btn.style.top = 500
-				btn.style.left = 30
-				disp = 1
-			}
-		}
-	</script>
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-	<style>
-		.btn1 {
-			position: relative;
-			top: 30;
-		}
+        .btn {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
 
-		.btn2 {
+        .btn-yes {
+            background-color: #28a745;
+            color: white;
+        }
 
-			position: absolute;
-		}
-		.row{
-
-			display: flex;
-			justify-content:center;
-
-		}
-		.container{
-			margin: 20px auto;
-			width: 300px;
-			align-items: center;
-		}
-	</style>
+        .btn-no {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+        }
+    </style>
 </head>
 
 <body>
-	<div class="container">
-		<h1>Ayaaaaang Ayooo Bukber!</h1>
-		<div class=""></div>
-		<div class="row">
+    <div class="container">
+        <h1>Ayaaaaang Ayooo Bukber!</h1>
+        <div class="row">
+            <button class="btn btn-yes" onclick="agree()">Gass</button>
+        </div>
+        <div>        
+            <button id="btnNo" class="btn btn-no" onmouseover="moveButton()">Ngga Mau</button>
+        </div>
+    </div>
 
-			<div class="btn1">
-				<input type="button" value="Gass" onclick="f1()" />
-			</div>
+    <script>
+        function agree() {
+            alert("You: Gasss");
+            alert("Me: Nah Gitu Dong 🥳🥳");
+        }
 
-			<div ID="btn" class="btn2">
+        function moveButton() {
+            let btn = document.getElementById("btnNo");
 
-				<input type="button" value=" Ngga Mau" onMouseOver="f2()" />
-			</div>
-		</div>
-	</div>
+            // Batasan area agar tidak keluar layar
+            let maxWidth = window.innerWidth - btn.clientWidth - 20;
+            let maxHeight = window.innerHeight - btn.clientHeight - 20;
 
+            let newX = Math.random() * maxWidth;
+            let newY = Math.random() * maxHeight;
+
+            btn.style.left = newX + "px";
+            btn.style.top = newY + "px";
+        }
+    </script>
 </body>
 
 </html>
